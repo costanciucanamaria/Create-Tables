@@ -1,0 +1,43 @@
+DROP TABLE IF EXISTS company_mast; 
+GO
+DROP TABLE IF EXISTS item_mast; 
+GO
+
+CREATE TABLE company_mast
+			(
+			com_id int primary key not null,
+			com_name varchar(128) not null
+			);
+GO 
+
+INSERT INTO company_mast(com_id, com_name) VALUES(11, 'Samsung');
+INSERT INTO company_mast(com_id, com_name) VALUES(12, 'iBall');
+INSERT INTO company_mast(com_id, com_name) VALUES(13, 'Epsion');
+INSERT INTO company_mast(com_id, com_name) VALUES(14, 'Zebronics');
+INSERT INTO company_mast(com_id, com_name) VALUES(15, 'Asus');
+INSERT INTO company_mast(com_id, com_name) VALUES(16, 'Frontech');
+
+SELECT * FROM company_mast
+
+
+CREATE TABLE item_mast
+			(
+			pro_id int primary key not null,
+			pro_name varchar(128) not null,
+			pro_price decimal (6,2),
+			pro_com int references company_mast(com_id) null
+			);
+GO 
+
+INSERT INTO item_mast(pro_id, pro_name, pro_price, pro_com) VALUES(101, 'Mother Board', 3200.00, 15);
+INSERT INTO item_mast(pro_id, pro_name, pro_price, pro_com) VALUES(102, 'Key Board', 450.00, 16);
+INSERT INTO item_mast(pro_id, pro_name, pro_price, pro_com) VALUES(103, 'ZIP drive', 250.00, 14);
+INSERT INTO item_mast(pro_id, pro_name, pro_price, pro_com) VALUES(104, 'Speaker', 550.00, 16);
+INSERT INTO item_mast(pro_id, pro_name, pro_price, pro_com) VALUES(105, 'Monitor', 5000.00, 11);
+INSERT INTO item_mast(pro_id, pro_name, pro_price, pro_com) VALUES(106, 'DVD drive', 900.00, 12);
+INSERT INTO item_mast(pro_id, pro_name, pro_price, pro_com) VALUES(107, 'CD drive', 800.00, 12);
+INSERT INTO item_mast(pro_id, pro_name, pro_price, pro_com) VALUES(108, 'Printer', 2600.00, 13);
+INSERT INTO item_mast(pro_id, pro_name, pro_price, pro_com) VALUES(109, 'Refill cartridge', 350.00, 13);
+INSERT INTO item_mast(pro_id, pro_name, pro_price, pro_com) VALUES(110, 'Mouse', 250.00, 12);
+
+SELECT * FROM item_mast
