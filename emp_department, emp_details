@@ -1,0 +1,45 @@
+DROP TABLE IF EXISTS emp_department; 
+GO
+DROP TABLE IF EXISTS emp_details; 
+GO
+
+CREATE TABLE emp_department
+			(
+			DPT_CODE int primary key not null,
+			DPT_NAME varchar(128) not null,
+			DPT_ALLOTMENT int null
+			);
+GO 
+
+INSERT INTO emp_department(DPT_CODE, DPT_NAME, DPT_ALLOTMENT) VALUES(57, 'IT', 65000);
+INSERT INTO emp_department(DPT_CODE, DPT_NAME, DPT_ALLOTMENT) VALUES(63, 'Finance', 15000);
+INSERT INTO emp_department(DPT_CODE, DPT_NAME, DPT_ALLOTMENT) VALUES(47, 'HR', 240000);
+INSERT INTO emp_department(DPT_CODE, DPT_NAME, DPT_ALLOTMENT) VALUES(27, 'RD', 55000);
+INSERT INTO emp_department(DPT_CODE, DPT_NAME, DPT_ALLOTMENT) VALUES(89, 'QC', 75000);
+
+SELECT * FROM emp_department
+
+CREATE TABLE emp_details
+			(
+			EMP_IDNO int primary key not null,
+			EMP_FNAME varchar(128) not null,
+			EMP_LNAME varchar(128) not null,
+			EMP_DEPT int references emp_department(DPT_CODE) not null
+			);
+GO 
+
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(127323, 'Michale', 'Robbin', 57);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(526689, 'Carlos', 'Snares', 63);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(843795, 'Enric', 'Dosio', 57);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(328717, 'Jhon', 'Snares', 63);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(444527, 'Joseph', 'Dosni', 47);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(659831, 'Zanifer', 'Emily', 47);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(847674, 'Kuleswar', 'Sitaraman', 57);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(748681, 'Henrey', 'Gabriel', 47);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(555935, 'Alex', 'Manuel', 57);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(539569, 'George', 'Mardy', 27);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(733843, 'Mario', 'Saule', 63);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(631548, 'Alan', 'Snappy', 27);
+INSERT INTO emp_details(EMP_IDNO, EMP_FNAME, EMP_LNAME, EMP_DEPT) VALUES(839139, 'Maria', 'Foster', 57);
+
+SELECT * FROM emp_details
